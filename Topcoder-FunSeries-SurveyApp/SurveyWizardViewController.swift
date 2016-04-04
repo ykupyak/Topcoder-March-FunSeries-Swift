@@ -169,7 +169,7 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func showPreviousQuestion(sender: AnyObject) {
         
-        questionIndex--
+        questionIndex -= 1
         self.updateUI()
     }
     
@@ -178,7 +178,7 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
         if (questionIndex < (questionsArray?.count)! - 1) {
             
             // Show Next Question
-            questionIndex++
+            questionIndex += 1
             self.updateUI()
         } else {
             

@@ -39,7 +39,7 @@ class SurveyListViewController: UIViewController, UITableViewDataSource, UITable
         let doneToolbar: UIToolbar = UIToolbar()
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("hideKeyboard"))
+        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: #selector(SurveyListViewController.hideKeyboard))
         
         doneToolbar.items = [flexibleSpace, doneButton]
         doneToolbar.sizeToFit()
