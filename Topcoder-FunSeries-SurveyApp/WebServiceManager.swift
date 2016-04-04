@@ -117,7 +117,7 @@ class WebServiceManager: NSObject {
         // Create a reference to a Firebase location
         let myRootRef = Firebase(url:"https://popping-fire-3496.firebaseio.com/Survey")
         
-        var postingDataArray: [Dictionary<String, String>]? = []
+        var postingDataArray: [Dictionary<String, NSObject>]? = []
         
         // Create JSON
         for surveyItem in questionsArray {
@@ -131,7 +131,7 @@ class WebServiceManager: NSObject {
             let imageData = UIImagePNGRepresentation(currentImage)
             let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
             postingDataArray?.append([
-                "surveyId": "\(surveyId)",
+                "surveyId": surveyId,
                 "imageFormat": "png",
                 "imageBase64": base64String
                 ])

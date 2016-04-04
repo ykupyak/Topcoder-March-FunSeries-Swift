@@ -14,15 +14,15 @@ class SurveyItem: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     
-    func getMappingDictionary() -> Dictionary<String, String> {
-    
-        
-        
-        let ansString = (self.answer != nil) ? self.answer : ""
-        
+    func getMappingDictionary() -> Dictionary<String, NSObject> {
         if let surveyId = self.surveyId{
             if let questionId = self.questionId{
-                return ["surveyId": "\(surveyId)", "questionId": "\(questionId)", "answer": ansString!]
+                if let answer = self.answer{
+                    return  ["surveyId": surveyId, "questionId": questionId, "answer": answer]
+                }
+                else{
+                    return  ["surveyId": surveyId, "questionId": questionId, "answer": ""]
+                }
             }
         }
         return  [:]
