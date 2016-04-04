@@ -20,8 +20,12 @@ class SurveyItem: NSManagedObject {
         
         let ansString = (self.answer != nil) ? self.answer : ""
         
-        let dictionary: [String: String] = ["surveyId": "\(self.surveyId)", "questionId": "\(self.questionId)", "answer": ansString!]
-        return dictionary
+        if let surveyId = self.surveyId{
+            if let questionId = self.questionId{
+                return ["surveyId": "\(surveyId)", "questionId": "\(questionId)", "answer": ansString!]
+            }
+        }
+        return  [:]
     }
 
 }
