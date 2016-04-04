@@ -31,6 +31,7 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var lastButton: UIButton!
     
     @IBOutlet weak var exceptionView: UIView!
     @IBOutlet weak var exceptionLabel: UILabel!
@@ -111,8 +112,10 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
             self.previousButton.hidden = false
         case (questionsArray?.count)! - 2:
             self.nextButton.setTitle("Next", forState:.Normal)
+            self.lastButton.hidden = false
         case (questionsArray?.count)! - 1:
             self.nextButton.setTitle("Finish", forState:.Normal)
+            self.lastButton.hidden = true
         default:
             break
         }
@@ -189,6 +192,16 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
             self.delegate?.surveyWizardScreen(self, didcompleteSurvey: self.selectedSurvey)
         }
     }
+    
+    @IBAction func showLastQuestion(sender: AnyObject) {
+        if (questionIndex < (questionsArray?.count)! - 1) {
+            
+            // Show Last Question
+            questionIndex = (questionsArray?.count)! - 1
+            self.updateUI()
+        }
+    }
+    
     
     //MARK: - TextView Delegate Methods
     

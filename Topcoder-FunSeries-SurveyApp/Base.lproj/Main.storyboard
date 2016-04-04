@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sQ2-Me-uXs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sQ2-Me-uXs">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -221,6 +221,19 @@
                                                     <action selector="showNextQuestion:" destination="SFB-Ci-5pT" eventType="touchUpInside" id="FpG-cO-gTW"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGR-k4-Bqq">
+                                                <rect key="frame" x="420" y="5" width="60" height="34"/>
+                                                <color key="backgroundColor" red="0.66274509800000003" green="0.81176470590000005" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="60" id="zjU-gZ-tIO"/>
+                                                </constraints>
+                                                <state key="normal" title="Last">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="showLastQuestion:" destination="SFB-Ci-5pT" eventType="touchUpInside" id="RHm-3M-u2I"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -228,9 +241,12 @@
                                             <constraint firstItem="xA1-L4-jZS" firstAttribute="leading" secondItem="ROQ-xb-Vbi" secondAttribute="leading" constant="5" id="2fU-lt-gnE"/>
                                             <constraint firstAttribute="bottom" secondItem="VAT-CL-OeE" secondAttribute="bottom" constant="5" id="3hC-0L-fLJ"/>
                                             <constraint firstItem="VAT-CL-OeE" firstAttribute="centerY" secondItem="xA1-L4-jZS" secondAttribute="centerY" id="Fb1-p5-bTt"/>
+                                            <constraint firstAttribute="bottom" secondItem="xGR-k4-Bqq" secondAttribute="bottom" constant="5" id="IJh-Ml-B6R"/>
                                             <constraint firstAttribute="height" constant="44" id="N5N-sX-7Qe"/>
                                             <constraint firstAttribute="trailing" secondItem="VAT-CL-OeE" secondAttribute="trailing" constant="5" id="Pu5-P5-D1B"/>
                                             <constraint firstAttribute="bottom" secondItem="xA1-L4-jZS" secondAttribute="bottom" constant="5" id="W4J-KY-e4S"/>
+                                            <constraint firstItem="xGR-k4-Bqq" firstAttribute="top" secondItem="ROQ-xb-Vbi" secondAttribute="top" constant="5" id="ZkV-f4-5jP"/>
+                                            <constraint firstItem="VAT-CL-OeE" firstAttribute="leading" secondItem="xGR-k4-Bqq" secondAttribute="trailing" constant="15" id="dPu-qK-dbf"/>
                                             <constraint firstItem="VAT-CL-OeE" firstAttribute="top" secondItem="ROQ-xb-Vbi" secondAttribute="top" constant="5" id="gBn-DN-ndR"/>
                                         </constraints>
                                     </view>
@@ -268,6 +284,7 @@
                         <outlet property="exceptionLabel" destination="JWo-Jj-H80" id="9xx-p1-4US"/>
                         <outlet property="exceptionView" destination="3du-Yk-fcB" id="u3i-f5-A18"/>
                         <outlet property="holderView" destination="uML-Kr-Dol" id="iMa-dE-zi7"/>
+                        <outlet property="lastButton" destination="xGR-k4-Bqq" id="H5G-j6-fe7"/>
                         <outlet property="nextButton" destination="VAT-CL-OeE" id="Kad-37-Wzj"/>
                         <outlet property="previousButton" destination="xA1-L4-jZS" id="IVl-7r-p3F"/>
                         <outlet property="questionView" destination="HQo-4r-1wy" id="8jJ-gO-jaL"/>
