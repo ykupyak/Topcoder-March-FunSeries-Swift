@@ -108,7 +108,11 @@ class WebServiceManager: NSObject {
         }
     }
     
-    func submitSurvey(questionsArray: [SurveyItem]) {
+    func submitSurvey(questionsArray: [SurveyItem], surveyId: NSInteger){
+        self.submitSurvey(questionsArray, surveyId: surveyId, image: nil)
+    }
+    
+    func submitSurvey(questionsArray: [SurveyItem], surveyId: NSInteger, image: UIImage?) {
         
         // Create a reference to a Firebase location
         let myRootRef = Firebase(url:"https://popping-fire-3496.firebaseio.com/Survey")
@@ -120,6 +124,19 @@ class WebServiceManager: NSObject {
             
             postingDataArray?.append(surveyItem.getMappingDictionary())
         }
+        
+        // append image if needs
+        if let currentImage = image{            
+            // use PNG format for image
+            let imageData = UIImagePNGRepresentation(currentImage)
+            let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+            postingDataArray?.append([
+                "surveyId": "\(surveyId)",
+                "imageFormat": "png",
+                "imageBase64": base64String
+                ])
+        }
+        
         
         var jsonData: NSData?
         do

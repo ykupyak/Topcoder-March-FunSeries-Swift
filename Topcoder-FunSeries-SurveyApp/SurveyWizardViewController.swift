@@ -14,7 +14,7 @@ protocol SurveyWizardScreenDelegate {
     func surveyWizardScreen(controller: SurveyWizardViewController, didcompleteSurvey survey:Survey?)
 }
 
-class SurveyWizardViewController: UIViewController, UITextViewDelegate {
+class SurveyWizardViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var delegate: SurveyWizardScreenDelegate?
     
@@ -23,6 +23,9 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
     var selectedSurvey: Survey?
     
     var questionsArray: [SurveyItem]?
+    
+    let photoPicker = UIImagePickerController()
+    let alertView = UIAlertViewBlock()
     
     @IBOutlet weak var holderView: UIView!
     
@@ -40,6 +43,10 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // init picker
+        self.photoPicker.delegate = self
+        self.photoPicker.allowsEditing = false
         
         // Configure UI
         self.configureUI()
@@ -185,11 +192,28 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
             self.updateUI()
         } else {
             
-            // Finish Survey
-            WebServiceManager.sharedManager.submitSurvey(questionsArray!)
+            // Ask photo
             
-            // Inform Delegates
-            self.delegate?.surveyWizardScreen(self, didcompleteSurvey: self.selectedSurvey)
+            alertView.title = "Photo"
+            alertView.message = "Please attach your photo for survey"
+            
+            alertView.append(["title":"Camera","block":{()->Void in
+                // use Camera
+                self.photoPicker.sourceType = .Camera
+                self.presentViewController(self.photoPicker, animated: true, completion: nil)
+            }])
+            
+            alertView.append(["title":"Photo Library","block":{()->Void in
+                // use Library
+                self.photoPicker.sourceType = .PhotoLibrary
+                self.presentViewController(self.photoPicker, animated: true, completion: nil)
+            }])
+            
+            alertView.appendCancel(["title":"Finish without photo","block":{()->Void in
+                self.finishSurvey(image: nil)
+            }])
+            
+            alertView.show()
         }
     }
     
@@ -224,4 +248,43 @@ class SurveyWizardViewController: UIViewController, UITextViewDelegate {
         // Save answer in core data
         CoreDataController.sharedInstance.saveMasterContext()
     }
+    
+    func finishSurvey(image image: UIImage?){
+        
+        // Finish Survey
+        WebServiceManager.sharedManager.submitSurvey(self.questionsArray!, surveyId: surveyId, image: image)
+        
+        // Inform Delegates
+        self.delegate?.surveyWizardScreen(self, didcompleteSurvey: self.selectedSurvey)
+    }
+    
+    //MARK: Delegates
+    func imagePickerController(
+        picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        dismissViewControllerAnimated(true, completion: nil)
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            
+            // scale image
+            let maxSize = CGFloat(500000)
+            if image.size.height * image.size.width > maxSize{
+                let scale = maxSize / (image.size.height * image.size.width)
+                let scaledImage = image.scaledImage(toSize: CGSize(width: image.size.width * scale, height: image.size.height * scale))
+                finishSurvey(image: scaledImage)
+            }
+            else{
+                finishSurvey(image: image)
+            }
+        }
+        else{
+            finishSurvey(image: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+        //finishSurvey(image: nil)
+    }
+    
 }

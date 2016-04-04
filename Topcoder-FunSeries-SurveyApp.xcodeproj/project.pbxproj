@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		102BE267122E69A32612D9B8 /* Pods_Topcoder_FunSeries_SurveyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2166FEBA3B3EA350AFB854 /* Pods_Topcoder_FunSeries_SurveyApp.framework */; };
+		45F716CF1CB28448005D7F92 /* UIAlertViewBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F716CE1CB28448005D7F92 /* UIAlertViewBlock.swift */; };
+		45F716D11CB2957A005D7F92 /* UIImage+additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F716D01CB2957A005D7F92 /* UIImage+additions.swift */; };
 		879A88AD1C0A18DB002CF6E3 /* SurveyModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 879A88AB1C0A18DB002CF6E3 /* SurveyModel.xcdatamodeld */; };
 		EE7E9AC41BBA734900391478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7E9AC31BBA734900391478 /* AppDelegate.swift */; };
 		EE7E9AC91BBA734900391478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE7E9AC71BBA734900391478 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		1D2166FEBA3B3EA350AFB854 /* Pods_Topcoder_FunSeries_SurveyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Topcoder_FunSeries_SurveyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45F716CE1CB28448005D7F92 /* UIAlertViewBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewBlock.swift; sourceTree = "<group>"; };
+		45F716D01CB2957A005D7F92 /* UIImage+additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+additions.swift"; sourceTree = "<group>"; };
 		75A5694F0A6C8F6BC422069E /* Pods-Topcoder-FunSeries-SurveyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topcoder-FunSeries-SurveyApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Topcoder-FunSeries-SurveyApp/Pods-Topcoder-FunSeries-SurveyApp.debug.xcconfig"; sourceTree = "<group>"; };
 		879A88AC1C0A18DB002CF6E3 /* SurveyModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SurveyModel.xcdatamodel; sourceTree = "<group>"; };
 		B16548F09ABE832CB4F2E0AC /* Pods-Topcoder-FunSeries-SurveyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Topcoder-FunSeries-SurveyApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-Topcoder-FunSeries-SurveyApp/Pods-Topcoder-FunSeries-SurveyApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45F716CD1CB28427005D7F92 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				45F716CE1CB28448005D7F92 /* UIAlertViewBlock.swift */,
+				45F716D01CB2957A005D7F92 /* UIImage+additions.swift */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
 		52F80AE298BC2FFB6DD2F6C4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7E9AC31BBA734900391478 /* AppDelegate.swift */,
+				45F716CD1CB28427005D7F92 /* Additions */,
 				F1EECB3C1C535C9B0087B60A /* WebServiceAPI */,
 				879A88B21C0A1A88002CF6E3 /* CoreData */,
 				F107FEA21C51687900EAD879 /* MVC */,
@@ -374,10 +388,12 @@
 				F1EECB3B1C535B680087B60A /* SurveyListViewController.swift in Sources */,
 				EE7E9AC41BBA734900391478 /* AppDelegate.swift in Sources */,
 				F107FEB51C51691300EAD879 /* SurveyDescriptionViewController.swift in Sources */,
+				45F716CF1CB28448005D7F92 /* UIAlertViewBlock.swift in Sources */,
 				F107FEB71C51691300EAD879 /* SurveyWizardViewController.swift in Sources */,
 				F12D5E911C593B4700DA107F /* CoreDataController.swift in Sources */,
 				F107FEBD1C516A1600EAD879 /* SurveyItem.swift in Sources */,
 				F1EECB401C5373200087B60A /* WebServiceManager.swift in Sources */,
+				45F716D11CB2957A005D7F92 /* UIImage+additions.swift in Sources */,
 				879A88AD1C0A18DB002CF6E3 /* SurveyModel.xcdatamodeld in Sources */,
 				F107FEC01C516A3C00EAD879 /* Survey+CoreDataProperties.swift in Sources */,
 			);
